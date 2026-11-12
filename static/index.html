@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturing AI Copilot</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">⚙</div>
+                <div>
+                    <h1>Manufacturing AI Copilot</h1>
+                    <p>Intelligent Manufacturing Assistant</p>
+                </div>
+            </div>
+            <div class="status">
+                <span class="status-dot"></span>
+                AI Assistant
+            </div>
+        </header>
+
+        <main class="main-content">
+
+            <section class="welcome">
+                <div class="welcome-icon">🏭</div>
+                <h2>Your Manufacturing Knowledge Assistant</h2>
+                <p>
+                    Ask questions about machine maintenance, safety procedures,
+                    operating parameters and quality standards.
+                </p>
+            </section>
+
+            <section class="suggestions">
+                <h3>Try asking</h3>
+                <div class="suggestion-list">
+                    <button class="suggestion" data-question="What are the daily preventive maintenance tasks?">
+                        Daily maintenance tasks
+                    </button>
+                    <button class="suggestion" data-question="What is the normal hydraulic system pressure?">
+                        Hydraulic pressure range
+                    </button>
+                    <button class="suggestion" data-question="Explain the lockout tagout procedure.">
+                        Lockout / Tagout procedure
+                    </button>
+                </div>
+            </section>
+
+            <section class="chat-section">
+                <div id="chatMessages" class="chat-messages" aria-live="polite">
+                    <div class="assistant-message">
+                        <div class="message-avatar">AI</div>
+                        <div class="message-content">
+                            <strong>Manufacturing AI Copilot</strong>
+                            <p>Hello! Ask me a question about your manufacturing documents.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="input-section">
+                <form id="questionForm">
+                    <textarea
+                        id="questionInput"
+                        placeholder="Ask your manufacturing question..."
+                        rows="2"
+                        required
+                    ></textarea>
+                    <button type="submit" id="sendButton">
+                        Ask AI
+                    </button>
+                </form>
+                <p class="input-note">
+                    Answers are generated from the provided manufacturing documents.
+                    Always follow approved safety procedures.
+                </p>
+            </section>
+
+        </main>
+
+        <footer>
+            Manufacturing AI Copilot | Powered by RAG
+        </footer>
+
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
