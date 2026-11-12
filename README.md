@@ -26,7 +26,6 @@ Manufacturing AI Copilot uses Retrieval-Augmented Generation (RAG) to retrieve r
 |---|---|
 | Python | Backend development |
 | FastAPI | REST API |
-| LangChain / RAG components | Retrieval workflow |
 | Sentence Transformers | Text embeddings |
 | FAISS | Vector similarity search |
 | Groq API | LLM-powered answer generation |
@@ -43,7 +42,7 @@ Manufacturing AI Copilot uses Retrieval-Augmented Generation (RAG) to retrieve r
 4. FAISS stores and retrieves relevant document chunks.
 5. The user's question is converted into an embedding.
 6. Relevant chunks are passed to the Groq LLM.
-7. The generated answer and available source references are displayed in the web interface.
+7. The generated answer and source references are displayed in the web interface.
 
 ## Project Structure
 
@@ -134,7 +133,7 @@ FastAPI documentation:
 http://127.0.0.1:8000/docs
 ```
 
-The application also supports local network access when the server is started with:
+For local network access, start the application with:
 
 ```bash
 uvicorn main:app --host 0.0.0.0 --port 8000
@@ -142,25 +141,59 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 
 Open `http://YOUR-LAPTOP-IP:8000` on a mobile device connected to the same accessible local network.
 
-## Sample Questions
+## Five Original Test Questions and Application Answers
 
-Try asking:
+The following five questions were created to test the application's ability to retrieve information from the provided manufacturing manuals and SOP documents.
 
-1. What is the required coolant concentration?
-2. How often should spindle runout be checked, and who is responsible?
-3. What is the acceptable outer diameter tolerance for BH-220?
-4. What should an operator do when alarm AL-104 occurs?
-5. What is the monthly salary of a machine operator?
+### Question 1: Coolant Concentration
 
-The last question is intentionally outside the provided documents. The chatbot should indicate that the information is unavailable.
+**Question:** What is the recommended coolant concentration for the TX-200 CNC turning centre?
 
-## Expected Results
+**Application Answer:** The recommended coolant concentration is 6–8%.
 
-- Coolant concentration: 6–8%.
-- Spindle runout: Monthly, checked by the Maintenance technician.
-- BH-220 outer diameter: 90.000 ± 0.050 mm.
-- AL-104: Top up ISO VG68 way lubricant to MAX and press RESET.
-- Machine operator salary: Not available in the provided documents.
+**Source:** MNT-MAN-CNC-02_TX-200_Preventive_Maintenance.pdf, Page 1.
+
+### Question 2: Machine Alarm AL-104
+
+**Question:** The machine is showing alarm AL-104. What does it mean and what should the operator do?
+
+**Application Answer:** AL-104 indicates low way lubrication. The operator should top up the ISO VG68 way lubricant to the MAX level and press RESET.
+
+**Source:** MNT-MAN-CNC-02_TX-200_Preventive_Maintenance.pdf, Page 2.
+
+### Question 3: Lockout/Tagout Safety
+
+**Question:** Who is allowed to remove a lockout lock from a machine?
+
+**Application Answer:** Each authorized person must remove their own personal lock. Another person must not remove that person's lock under the normal lock-removal procedure.
+
+**Source:** SAF-SOP-003_Lockout_Tagout_Procedure.pdf.
+
+### Question 4: BH-220 Outer Diameter Tolerance
+
+**Question:** What is the outer diameter tolerance for the BH-220 bearing housing?
+
+**Application Answer:** The outer diameter is 90.000 ± 0.050 mm.
+
+**Source:** QC-SOP-014 Rev04 Incoming Material Inspection, Page 2.
+
+### Question 5: Spindle Runout Maintenance
+
+**Question:** How often should spindle runout be checked, and who does it?
+
+**Application Answer:** Spindle runout should be checked monthly by the Maintenance technician.
+
+**Source:** MNT-MAN-CNC-02_TX-200_Preventive_Maintenance.pdf, Page 1.
+
+## Testing Summary
+
+| Test | Expected result |
+|---|---|
+| Coolant concentration | 6–8% |
+| Alarm AL-104 | Top up ISO VG68 to MAX and press RESET |
+| Lockout lock removal | Each authorized person removes their own lock |
+| BH-220 outer diameter | 90.000 ± 0.050 mm |
+| Spindle runout | Monthly, Maintenance technician |
 
 ## Limitations
 
